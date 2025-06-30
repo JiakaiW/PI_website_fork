@@ -11,7 +11,7 @@
         <div class="research-direction-card">
             <!-- Research Image -->
             <div class="research-image">
-                <img src="/research-directions/{{ direction_key }}/images/research-image.jpg" 
+                <img src="{{ site.baseurl }}/research-directions/{{ direction_key }}/images/research-image.jpg" 
                      alt="{{ direction_data.title }}"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div class="image-placeholder" style="display: none;">
@@ -93,4 +93,4 @@
 </div>
 
 <!-- Load member containers JavaScript -->
-<script src="/js/member-containers.js"></script> 
+<script src="{{ site.baseurl }}/js/member-containers.js"></script> 

@@ -13,7 +13,7 @@ title: "Prof. Maxim Vavilov - Quantum Computing Research"
     <!-- Professor Photo -->
     <div class="photo-container">
         <div class="professor-photo">
-            <img src="/images/professor.jpg" alt="Prof. Maxim Vavilov" 
+            <img src="{{ site.baseurl }}/images/professor.jpg" alt="Prof. Maxim Vavilov" 
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="photo-placeholder" style="display: none;">
                 <div>
@@ -38,7 +38,7 @@ title: "Prof. Maxim Vavilov - Quantum Computing Research"
     <!-- SEEQC Advisory Card -->
     <div class="advisory-card">
         <div class="advisory-logo">
-            <img src="/assets/seeqc_us_logo.jpg" alt="SEEQC Logo">
+            <img src="{{ site.baseurl }}/assets/seeqc_us_logo.jpg" alt="SEEQC Logo">
         </div>
         <div class="advisory-content">
             <h3>Advisory Board Member</h3>
