@@ -4,18 +4,16 @@ order: 1
 keywords: ["Superconducting Qubits", "Gate Fidelity", "Quantum Control"]
 members: ["Jiakai Wang","Yinqi Chen", "Valeria Moreno", "Nick Dimitriv"]
 papers:
-  - title: "Highly Stable CNOT Gate for Fluxonium Qubits"
-    authors: "M. Vavilov, et al."
-    journal: "Physical Review Letters"
+  - title: " Integer Fluxonium Qubit "
+    authors: "Raymond A. Mencia, et al."
+    journal: "PRXQ"
     year: 2024
-    url: "https://arxiv.org/abs/2401.xxxxx"
-  - title: "24-Day Stability in Fluxonium Quantum Gates"
-    authors: "Research Team, M. Vavilov"
-    journal: "Nature Quantum Information"
+    url: "https://journals.aps.org/prxquantum/abstract/10.1103/PRXQuantum.5.040318"
+  - title: " 24 days-stable CNOT-gate on fluxonium qubits with over 99.9% fidelity"
+    authors: "Wei-Ju Lin, et al."
+    journal: "PRXQ"
     year: 2024
-    url: "https://arxiv.org/abs/2402.xxxxx"
+    url: "https://journals.aps.org/prxquantum/abstract/10.1103/PRXQuantum.6.010349"
 ---
 
-Development of highly stable quantum gates for fluxonium qubits with exceptional fidelity and long-term stability. Our recent work has achieved CNOT gate fidelities exceeding 99.9% with remarkable 24-day stability without recalibration.
-
-This research focuses on minimizing decoherence-related errors during gate operations, which is crucial for building more reliable and scalable quantum circuits. Our approach combines advanced control techniques with novel circuit architectures to achieve unprecedented stability in superconducting qubit systems. 
+We collaborate with experimentalists to work on fluxonium, a promising 2-node superconducting qubit

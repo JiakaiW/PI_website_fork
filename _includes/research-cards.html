@@ -13,11 +13,11 @@
             <div class="research-image">
                 <img src="{{ site.baseurl }}/research-directions/{{ direction_key }}/images/research-image.jpg" 
                      alt="{{ direction_data.title }}"
-                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                     onerror="this.src='{{ site.baseurl }}/research-directions/{{ direction_key }}/images/research-image.png'; this.onerror=function(){ this.style.display='none'; this.nextElementSibling.style.display='flex'; };">
                 <div class="image-placeholder" style="display: none;">
                     <div>
                         <strong>Research Image</strong><br>
-                        <small>Add image: /research-directions/{{ direction_key }}/images/research-image.jpg</small>
+                        <small>Add image: /research-directions/{{ direction_key }}/images/research-image.jpg or research-image.png</small>
                     </div>
                 </div>
             </div>

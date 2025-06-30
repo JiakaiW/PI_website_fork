@@ -201,17 +201,22 @@ class ResearchDirectionsLoader {
                 `).join('')}
             </div>` : '';
 
+        // Create image URLs for both extensions
+        const baseImagePath = `${this.getSiteBaseUrl()}/research-directions/${direction.key}/images/research-image`;
+        const jpgUrl = `${baseImagePath}.jpg`;
+        const pngUrl = `${baseImagePath}.png`;
+
         return `
             <div class="research-direction-card">
                 <!-- Research Image -->
                 <div class="research-image">
-                    <img src="${this.getSiteBaseUrl()}/research-directions/${direction.key}/images/research-image.jpg" 
+                    <img src="${jpgUrl}" 
                          alt="${direction.title}"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                         onerror="if (this.src === '${jpgUrl}') { this.src = '${pngUrl}'; } else { this.style.display='none'; this.nextElementSibling.style.display='flex'; }">
                     <div class="image-placeholder" style="display: none;">
                         <div>
                             <strong>Research Image</strong><br>
-                            <small>Add image: ${this.getSiteBaseUrl()}/research-directions/${direction.key}/images/research-image.jpg</small>
+                            <small>Add image: ${baseImagePath}.jpg or ${baseImagePath}.png</small>
                         </div>
                     </div>
                 </div>
