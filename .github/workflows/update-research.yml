@@ -1,0 +1,40 @@
+name: Update Research Directions
+
+on:
+  push:
+    paths:
+      - 'research-directions/**'
+      - 'members/**'
+  workflow_dispatch:
+
+jobs:
+  update-research:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+    
+    - name: Update research directions data
+      run: |
+        ruby scripts/generate_research_data.rb
+        ruby scripts/generate_members_data.rb
+    
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add _data/
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Auto-update research directions and members data"
+          git push
+        fi 
