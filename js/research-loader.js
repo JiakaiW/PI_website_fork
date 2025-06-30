@@ -37,7 +37,8 @@ class ResearchDirectionsLoader {
         
         for (const dirName of directionsToTry) {
             try {
-                const response = await fetch(`${this.baseUrl}/research-directions/${dirName}/direction.md`);
+                const siteBaseUrl = this.getSiteBaseUrl();
+                const response = await fetch(`${siteBaseUrl}/research-directions/${dirName}/direction.md`);
                 if (response.ok) {
                     const content = await response.text();
                     const parsed = this.parseMarkdownWithFrontMatter(content);
@@ -61,7 +62,8 @@ class ResearchDirectionsLoader {
     async tryLoadDirectoryIndex() {
         // Try to load a directory listing (works on some servers)
         try {
-            const response = await fetch(`${this.baseUrl}/research-directions/`);
+            const siteBaseUrl = this.getSiteBaseUrl();
+            const response = await fetch(`${siteBaseUrl}/research-directions/`);
             if (response.ok) {
                 const html = await response.text();
                 // Parse directory listing HTML to extract folder names
@@ -203,13 +205,13 @@ class ResearchDirectionsLoader {
             <div class="research-direction-card">
                 <!-- Research Image -->
                 <div class="research-image">
-                    <img src="/research-directions/${direction.key}/images/research-image.jpg" 
+                    <img src="${this.getSiteBaseUrl()}/research-directions/${direction.key}/images/research-image.jpg" 
                          alt="${direction.title}"
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="image-placeholder" style="display: none;">
                         <div>
                             <strong>Research Image</strong><br>
-                            <small>Add image: /research-directions/${direction.key}/images/research-image.jpg</small>
+                            <small>Add image: ${this.getSiteBaseUrl()}/research-directions/${direction.key}/images/research-image.jpg</small>
                         </div>
                     </div>
                 </div>
@@ -231,7 +233,7 @@ class ResearchDirectionsLoader {
                             <div class="team-placeholder">
                                 <div>
                                     <strong>Team Photos</strong><br>
-                                    <small>Add student photos to:<br>/research-directions/${direction.key}/members/</small>
+                                    <small>Add student photos to:<br>${this.getSiteBaseUrl()}/research-directions/${direction.key}/members/</small>
                                 </div>
                             </div>
                         </div>

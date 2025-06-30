@@ -9,6 +9,21 @@ class MemberContainers {
         this.baseUrl = window.location.origin + window.location.pathname.replace(/\/$/, '');
     }
 
+    getSiteBaseUrl() {
+        // Try to get baseurl from meta tag first (if we add it), otherwise detect from URL
+        const metaBaseUrl = document.querySelector('meta[name="site-baseurl"]');
+        if (metaBaseUrl) {
+            return metaBaseUrl.getAttribute('content');
+        }
+        
+        // Fallback: detect from current URL path
+        const path = window.location.pathname;
+        if (path.includes('/PI_website_fork')) {
+            return '/PI_website_fork';
+        }
+        return '';
+    }
+
     setMembersData(membersData) {
         this.members = membersData;
         console.log('Set members data:', this.members);
@@ -21,7 +36,8 @@ class MemberContainers {
         }
 
         try {
-            const response = await fetch(`${this.baseUrl}/_data/members.yml`);
+            const siteBaseUrl = this.getSiteBaseUrl();
+            const response = await fetch(`${siteBaseUrl}/_data/members.yml`);
             if (response.ok) {
                 const yamlText = await response.text();
                 this.members = this.parseYaml(yamlText);
@@ -31,7 +47,8 @@ class MemberContainers {
             console.log('Could not load members data, using fallback');
             // Fallback: try to load from a JSON endpoint if available
             try {
-                const jsonResponse = await fetch(`${this.baseUrl}/members.json`);
+                const siteBaseUrl = this.getSiteBaseUrl();
+                const jsonResponse = await fetch(`${siteBaseUrl}/members.json`);
                 if (jsonResponse.ok) {
                     this.members = await jsonResponse.json();
                 }
@@ -124,7 +141,9 @@ class MemberContainers {
 
         console.log('Found member data:', member);
         const socialMediaHtml = this.renderSocialMedia(member.social_media || {});
-        const imageUrl = member.image ? `/members/${member.image}` : '/members/default.jpg';
+        // Get the site's base URL from the current page location
+        const siteBaseUrl = this.getSiteBaseUrl();
+        const imageUrl = member.image ? `${siteBaseUrl}/members/${encodeURIComponent(member.image)}` : `${siteBaseUrl}/members/default.jpg`;
 
         return `
             <div class="member-container" data-member-id="${memberId}">
