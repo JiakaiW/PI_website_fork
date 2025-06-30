@@ -19,7 +19,7 @@ module Jekyll
       potential_extensions.each do |ext|
         potential_file = File.join(base_path, image_dir, @basename + ext)
         if File.exist?(potential_file)
-          found_image = File.join(site.baseurl, image_dir, @basename + ext)
+          found_image = File.join('/', image_dir, @basename + ext)
           break
         end
       end

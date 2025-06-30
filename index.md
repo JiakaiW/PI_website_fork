@@ -55,17 +55,7 @@ title: "Prof. Maxim Vavilov - Quantum Computing Research"
     <!-- Team Photo Section -->
     <div class="team-section">
         <h3>Our Research Team</h3>
-        <div class="team-photo">
-            <img src="/images/team.jpg" alt="Research Team" 
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="photo-placeholder" style="display: none;">
-                <div>
-                    <strong>Team Photo</strong><br>
-                    <small>Add team photo here:<br>
-                    Place image in /images/team.jpg</small>
-                </div>
-            </div>
-        </div>
+        {% include team-photo.html %}
         <div class="photo-caption mt-2">
             Quantum Computing Research Group<br>
             <em>Building the future of quantum information processing</em>
