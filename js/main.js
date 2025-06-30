@@ -108,22 +108,41 @@ class ProfessorWebsite {
             return;
         }
 
-        const publicationsHTML = this.publications.map(pub => `
-            <div class="publication-item">
-                <h3 class="publication-title">
-                    <a href="${pub.pdfLink}" target="_blank" rel="noopener noreferrer">
-                        ${pub.title}
-                    </a>
-                </h3>
-                <div class="publication-authors">
-                    <strong>Authors:</strong> ${pub.authors}
-                </div>
-                <div class="publication-date">
-                    <strong>Published:</strong> ${pub.publishedDate}
-                </div>
-                <div class="publication-abstract">
-                    ${pub.abstract}
-                </div>
+        // Group publications by year
+        const publicationsByYear = {};
+        this.publications.forEach(pub => {
+            const year = new Date(pub.publishedDate).getFullYear();
+            if (!publicationsByYear[year]) {
+                publicationsByYear[year] = [];
+            }
+            publicationsByYear[year].push(pub);
+        });
+
+        // Sort years in descending order
+        const sortedYears = Object.keys(publicationsByYear).sort((a, b) => b - a);
+
+        // Generate HTML for each year group
+        const publicationsHTML = sortedYears.map(year => `
+            <div class="publication-year-group">
+                <h2 class="publication-year">${year} <span class="publication-count">(${publicationsByYear[year].length} papers)</span></h2>
+                ${publicationsByYear[year].map(pub => `
+                    <div class="publication-item">
+                        <h3 class="publication-title">
+                            <a href="${pub.pdfLink}" target="_blank" rel="noopener noreferrer">
+                                ${pub.title}
+                            </a>
+                        </h3>
+                        <div class="publication-authors">
+                            <strong>Authors:</strong> ${pub.authors}
+                        </div>
+                        <div class="publication-date">
+                            <strong>Published:</strong> ${pub.publishedDate}
+                        </div>
+                        <div class="publication-abstract">
+                            ${pub.abstract}
+                        </div>
+                    </div>
+                `).join('')}
             </div>
         `).join('');
 

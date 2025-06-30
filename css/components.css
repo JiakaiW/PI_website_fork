@@ -277,7 +277,7 @@
     padding: 1.5rem;
     margin: 2rem 0;
     box-shadow: var(--shadow-light);
-    border-left: 4px solid #0066cc;
+    border-left: 4px solid var(--secondary-color);
     transition: var(--transition-standard);
     display: flex;
     align-items: center;
@@ -317,7 +317,7 @@
 }
 
 .advisory-link {
-    color: #0066cc;
+    color: var(--secondary-color);
     text-decoration: none;
     font-weight: 500;
 }
@@ -344,6 +344,10 @@
 .publication-item:hover {
     box-shadow: var(--shadow-medium);
     transform: translateX(5px);
+}
+
+.publication-item:last-child {
+    margin-bottom: 0;
 }
 
 .publication-title {
@@ -564,4 +568,22 @@
     .team-photo-container {
         margin: 3rem 0;
     }
+}
+
+.publication-year-group {
+    margin-bottom: 3rem;
+}
+
+.publication-year {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.publication-count {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: normal;
 } 

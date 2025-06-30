@@ -56,17 +56,17 @@ title: "Prof. Maxim Vavilov - Quantum Computing Research"
     <div class="team-section">
         <h3>Our Research Team</h3>
         {% include team-photo.html %}
-        <div class="photo-caption mt-2">
+        <!-- <div class="photo-caption mt-2">
             Quantum Computing Research Group<br>
             <em>Building the future of quantum information processing</em>
-        </div>
+        </div> -->
     </div>
 </section>
 
 <!-- Publications Section -->
 <section id="publications" class="section hidden">
     <h2 class="text-center mb-4">Publications</h2>
-    <p class="text-center mb-4">Our latest research publications from arXiv, automatically updated.</p>
+    <p class="text-center mb-4">Publications from arXiv, automatically updated.</p>
     
     <div class="publications-container">
         <div id="publications-list">

@@ -44,17 +44,7 @@ class MemberContainers {
                 console.log('Loaded members data from YAML:', this.members);
             }
         } catch (error) {
-            console.log('Could not load members data, using fallback');
-            // Fallback: try to load from a JSON endpoint if available
-            try {
-                const siteBaseUrl = this.getSiteBaseUrl();
-                const jsonResponse = await fetch(`${siteBaseUrl}/members.json`);
-                if (jsonResponse.ok) {
-                    this.members = await jsonResponse.json();
-                }
-            } catch (fallbackError) {
-                console.log('No members data available');
-            }
+            console.log('Could not load members data');
         }
         return this.members;
     }
