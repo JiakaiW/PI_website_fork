@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Documentation for Prof. Maxim Vavilov</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/member-containers.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <script src="/js/main.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="main-nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <h1>Prof. Maxim Vavilov</h1>
+                    <p class="nav-subtitle">Quantum Computing Research</p>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link" data-section="home">Home</a></li>
+                    <li><a href="#publications" class="nav-link" data-section="publications">Publications</a></li>
+                    <li><a href="#news" class="nav-link" data-section="news">News</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content" id="main-content">
+        <h1 id="website-documentation-for-prof-maxim-vavilov">Website Documentation for Prof. Maxim Vavilov</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>This website is built using Jekyll with an advanced decoupled architecture that automatically manages research directions. The site is organized into separate files and folders for easy maintenance and updates, following modern web development practices.</p>
+
+<h2 id="file-structure">File Structure</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── _layouts/                   # Website templates
+│   └── default.html           # Main page template
+├── _includes/                  # Reusable components
+│   └── research-cards.html    # Research direction cards template
+├── _plugins/                   # Jekyll plugins
+│   └── research_directions.rb # Automatic research direction loader
+├── css/                        # Styling files
+│   ├── main.css               # Main styles
+│   └── components.css         # Component-specific styles
+├── js/                         # JavaScript functionality
+│   └── main.js                # Main website functionality
+├── images/                     # Store photos here
+│   ├── professor.jpg          # Professor's photo
+│   └── team.jpg               # Team photo
+├── assets/                     # Other website assets
+│   └── seeqc_us_logo.jpg      # SEEQC logo
+├── research-directions/        # AUTOMATIC RESEARCH MANAGEMENT
+│   ├── README.md              # Research directions guide
+│   ├── fluxonium-qubits/      # Research direction folder
+│   │   ├── direction.md       # Research content
+│   │   ├── images/           # Research images
+│   │   └── members/          # Student photos
+│   └── [other-directions]/    # Additional research areas
+├── index.md                    # MAIN CONTENT FILE
+├── _config.yml                # Website configuration
+└── WEBSITE_DOCUMENTATION.md   # This documentation file
+</code></pre></div></div>
+
+<h2 id="key-features">Key Features</h2>
+
+<h3 id="-automatic-research-direction-management">🔄 <strong>Automatic Research Direction Management</strong></h3>
+<p>The website automatically scans the <code class="language-plaintext highlighter-rouge">research-directions/</code> folder and generates research cards on the homepage. No manual coding required!</p>
+
+<h3 id="-responsive-design">📱 <strong>Responsive Design</strong></h3>
+<p>Works perfectly on desktop, tablet, and mobile devices.</p>
+
+<h3 id="-dynamic-publications">📚 <strong>Dynamic Publications</strong></h3>
+<p>Publications are automatically loaded from arXiv using your name.</p>
+
+<h3 id="-team-management">👥 <strong>Team Management</strong></h3>
+<p>Student photos and names are automatically displayed based on filename.</p>
+
+<h2 id="how-to-update-website-content">How to Update Website Content</h2>
+
+<h3 id="1-adding-photos">1. Adding Photos</h3>
+
+<p><strong>Professor Photo:</strong></p>
+<ol>
+  <li>Save your professional photo as <code class="language-plaintext highlighter-rouge">professor.jpg</code> in the <code class="language-plaintext highlighter-rouge">images/</code> folder</li>
+  <li>The website will automatically display it in place of the placeholder</li>
+</ol>
+
+<p><strong>Team Photo:</strong></p>
+<ol>
+  <li>Save your team photo as <code class="language-plaintext highlighter-rouge">team.jpg</code> in the <code class="language-plaintext highlighter-rouge">images/</code> folder</li>
+  <li>The website will automatically display it at the bottom of the homepage</li>
+</ol>
+
+<p><strong>Photo Requirements:</strong></p>
+<ul>
+  <li>Format: JPG or PNG</li>
+  <li>Professor photo: 800x600 pixels or similar aspect ratio</li>
+  <li>Team photo: 1200x800 pixels or similar wide format</li>
+  <li>File size: Keep under 2MB for fast loading</li>
+</ul>
+
+<h3 id="2-managing-research-directions">2. Managing Research Directions</h3>
+
+<h4 id="adding-a-new-research-direction"><strong>Adding a New Research Direction:</strong></h4>
+
+<ol>
+  <li><strong>Create the folder structure:</strong>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>research-directions/
+└── your-new-research-area/
+    ├── direction.md
+    ├── images/
+    │   └── research-image.jpg
+    └── members/
+        ├── student-name-1.jpg
+        └── student-name-2.jpg
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Create <code class="language-plaintext highlighter-rouge">direction.md</code> with this format:</strong>
+```yaml
+—
+title: “Your Research Area Title”
+order: 5
+keywords: [“keyword1”, “keyword2”, “keyword3”]
+papers:
+    <ul>
+      <li>title: “Paper Title”
+authors: “Author list”
+journal: “Journal name”
+year: 2024
+url: “https://arxiv.org/abs/xxxx.xxxxx”
+—</li>
+    </ul>
+
+    <p>Brief description of your research area. This text appears on the homepage card.
+```</p>
+  </li>
+  <li>
+    <p><strong>Add the research image</strong> to <code class="language-plaintext highlighter-rouge">images/research-image.jpg</code></p>
+  </li>
+  <li>
+    <p><strong>Add student photos</strong> to <code class="language-plaintext highlighter-rouge">members/</code> folder (filename becomes display name)</p>
+  </li>
+  <li><strong>Update the website data</strong> by running: <code class="language-plaintext highlighter-rouge">./update_research.sh</code></li>
+</ol>
+
+<h4 id="updating-existing-research-directions"><strong>Updating Existing Research Directions:</strong></h4>
+
+<ul>
+  <li><strong>Change description</strong>: Edit the content in <code class="language-plaintext highlighter-rouge">direction.md</code></li>
+  <li><strong>Add/remove papers</strong>: Update the <code class="language-plaintext highlighter-rouge">papers</code> section in <code class="language-plaintext highlighter-rouge">direction.md</code></li>
+  <li><strong>Add/remove students</strong>: Add/remove photos in the <code class="language-plaintext highlighter-rouge">members/</code> folder</li>
+  <li><strong>Change research image</strong>: Replace <code class="language-plaintext highlighter-rouge">images/research-image.jpg</code></li>
+  <li><strong>After any changes</strong>: Run <code class="language-plaintext highlighter-rouge">./update_research.sh</code> to update the website</li>
+</ul>
+
+<h4 id="student-photo-naming"><strong>Student Photo Naming:</strong></h4>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">john-smith.jpg</code> displays as “John Smith”</li>
+  <li><code class="language-plaintext highlighter-rouge">mary-johnson.jpg</code> displays as “Mary Johnson”</li>
+  <li>Use hyphens for spaces, lowercase filenames</li>
+</ul>
+
+<h3 id="3-adding-news-items">3. Adding News Items</h3>
+
+<p>Edit <code class="language-plaintext highlighter-rouge">index.md</code> and find the “News Section”. Add new items at the top:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"news-item"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"news-date"</span><span class="nt">&gt;</span>Month Year<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"news-content"</span><span class="nt">&gt;</span>
+        Your news content here...
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p><strong>Example:</strong></p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"news-item"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"news-date"</span><span class="nt">&gt;</span>January 2025<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"news-content"</span><span class="nt">&gt;</span>
+        Our paper on quantum error correction was accepted at Physical Review Letters.
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="4-updating-research-directions">4. Updating Research Directions</h3>
+
+<p><strong>Important</strong>: After adding, removing, or modifying research directions, you must run the update script:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./update_research.sh
+</code></pre></div></div>
+
+<p>This script:</p>
+<ul>
+  <li>Scans your <code class="language-plaintext highlighter-rouge">research-directions/</code> folder</li>
+  <li>Generates the data file that powers the website</li>
+  <li>Shows you which research directions are currently active</li>
+  <li>Works with both local development and GitHub Pages</li>
+</ul>
+
+<p><strong>When to run the update script:</strong></p>
+<ul>
+  <li>After adding a new research direction folder</li>
+  <li>After removing a research direction folder</li>
+  <li>After modifying <code class="language-plaintext highlighter-rouge">direction.md</code> files</li>
+  <li>After changing research direction content</li>
+</ul>
+
+<h3 id="5-publications">5. Publications</h3>
+
+<p>Publications are <strong>completely automatic</strong>! The system:</p>
+<ul>
+  <li>Searches arXiv for papers with “Maxim Vavilov” as author</li>
+  <li>Filters for quantum physics papers</li>
+  <li>Displays the 50 most recent papers</li>
+  <li>Updates automatically when visitors view the Publications page</li>
+</ul>
+
+<p><strong>No manual updates needed for publications!</strong></p>
+
+<h3 id="5-seeqc-advisory-information">5. SEEQC Advisory Information</h3>
+
+<p>The SEEQC advisory board card is automatically displayed. To update:</p>
+<ul>
+  <li>Edit the text in the “SEEQC Advisory Card” section of <code class="language-plaintext highlighter-rouge">index.md</code></li>
+  <li>The logo is stored in <code class="language-plaintext highlighter-rouge">/assets/seeqc_us_logo.jpg</code></li>
+</ul>
+
+<h2 id="website-sections-explained">Website Sections Explained</h2>
+
+<h3 id="home-page-all-in-one">Home Page (All-in-One)</h3>
+<ul>
+  <li><strong>Welcome message</strong> and professor photo</li>
+  <li><strong>SEEQC advisory board</strong> information with logo</li>
+  <li><strong>Research directions</strong> automatically generated from folders</li>
+  <li><strong>Team photo</strong> at the bottom</li>
+</ul>
+
+<h3 id="publications-page">Publications Page</h3>
+<ul>
+  <li>Automatically populated from arXiv</li>
+  <li>Shows title, authors, publication date, and abstract</li>
+  <li>Links directly to PDFs on arXiv</li>
+</ul>
+
+<h3 id="news-page">News Page</h3>
+<ul>
+  <li>Manually updated news items</li>
+  <li>Chronological display (newest first)</li>
+</ul>
+
+<h2 id="advanced-features">Advanced Features</h2>
+
+<h3 id="automatic-research-cards">Automatic Research Cards</h3>
+<p>Each research direction automatically displays:</p>
+<ul>
+  <li>Research image from <code class="language-plaintext highlighter-rouge">images/research-image.jpg</code></li>
+  <li>Title and description from <code class="language-plaintext highlighter-rouge">direction.md</code></li>
+  <li>Up to 3 related papers with links</li>
+  <li>Team member photos with names</li>
+  <li>Keyword tags</li>
+</ul>
+
+<h3 id="smart-image-handling">Smart Image Handling</h3>
+<ul>
+  <li>Shows actual images when available</li>
+  <li>Shows helpful placeholders when images are missing</li>
+  <li>Provides exact file paths for easy image addition</li>
+</ul>
+
+<h3 id="responsive-team-display">Responsive Team Display</h3>
+<ul>
+  <li>Student photos are displayed in a responsive grid</li>
+  <li>Names are automatically formatted from filenames</li>
+  <li>Hover effects for better interactivity</li>
+</ul>
+
+<h2 id="file-naming-conventions">File Naming Conventions</h2>
+
+<h3 id="research-directions">Research Directions</h3>
+<ul>
+  <li><strong>Folder names</strong>: <code class="language-plaintext highlighter-rouge">quantum-error-correction</code> (lowercase, hyphens)</li>
+  <li><strong>Content file</strong>: Always <code class="language-plaintext highlighter-rouge">direction.md</code></li>
+  <li><strong>Research image</strong>: Always <code class="language-plaintext highlighter-rouge">research-image.jpg</code> or <code class="language-plaintext highlighter-rouge">research-image.png</code></li>
+</ul>
+
+<h3 id="student-photos">Student Photos</h3>
+<ul>
+  <li><strong>Format</strong>: <code class="language-plaintext highlighter-rouge">firstname-lastname.jpg</code> (lowercase, hyphens for spaces)</li>
+  <li><strong>Examples</strong>: <code class="language-plaintext highlighter-rouge">john-smith.jpg</code>, <code class="language-plaintext highlighter-rouge">mary-jane-watson.jpg</code></li>
+  <li><strong>Size</strong>: 150x150 pixels (square), under 500KB</li>
+</ul>
+
+<h3 id="main-photos">Main Photos</h3>
+<ul>
+  <li><strong>Professor</strong>: <code class="language-plaintext highlighter-rouge">images/professor.jpg</code></li>
+  <li><strong>Team</strong>: <code class="language-plaintext highlighter-rouge">images/team.jpg</code></li>
+</ul>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<h3 id="research-direction-not-showing">Research Direction Not Showing</h3>
+<ol>
+  <li>Check that the folder is in <code class="language-plaintext highlighter-rouge">research-directions/</code></li>
+  <li>Verify <code class="language-plaintext highlighter-rouge">direction.md</code> exists with proper front matter</li>
+  <li>Check YAML formatting (indentation matters!)</li>
+  <li>Ensure <code class="language-plaintext highlighter-rouge">order</code> field is a number</li>
+</ol>
+
+<h3 id="images-not-displaying">Images Not Displaying</h3>
+<ol>
+  <li>Check exact filenames match requirements</li>
+  <li>Verify images are in correct subfolders</li>
+  <li>Check file extensions (.jpg, .png)</li>
+  <li>Ensure images aren’t corrupted</li>
+</ol>
+
+<h3 id="student-names-not-displaying">Student Names Not Displaying</h3>
+<ol>
+  <li>Check filename format: <code class="language-plaintext highlighter-rouge">firstname-lastname.jpg</code></li>
+  <li>Use lowercase filenames</li>
+  <li>Use hyphens (not underscores or spaces)</li>
+  <li>Ensure photos are in <code class="language-plaintext highlighter-rouge">members/</code> subfolder</li>
+</ol>
+
+<h2 id="quick-reference">Quick Reference</h2>
+
+<h3 id="most-common-tasks">Most Common Tasks</h3>
+
+<ol>
+  <li><strong>Add a new student to a research direction:</strong>
+    <ul>
+      <li>Save photo as <code class="language-plaintext highlighter-rouge">firstname-lastname.jpg</code> in the appropriate <code class="language-plaintext highlighter-rouge">members/</code> folder</li>
+    </ul>
+  </li>
+  <li><strong>Update research description:</strong>
+    <ul>
+      <li>Edit the content below the <code class="language-plaintext highlighter-rouge">---</code> in <code class="language-plaintext highlighter-rouge">direction.md</code></li>
+    </ul>
+  </li>
+  <li><strong>Add a new research paper:</strong>
+    <ul>
+      <li>Add to the <code class="language-plaintext highlighter-rouge">papers:</code> section in <code class="language-plaintext highlighter-rouge">direction.md</code></li>
+    </ul>
+  </li>
+  <li><strong>Add news:</strong>
+    <ul>
+      <li>Add a new <code class="language-plaintext highlighter-rouge">news-item</code> div at the top of the news section in <code class="language-plaintext highlighter-rouge">index.md</code></li>
+    </ul>
+  </li>
+  <li><strong>Change photos:</strong>
+    <ul>
+      <li>Replace <code class="language-plaintext highlighter-rouge">images/professor.jpg</code> or <code class="language-plaintext highlighter-rouge">images/team.jpg</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="getting-help">Getting Help</h3>
+
+<p><strong>For content updates</strong>: Follow this documentation
+<strong>For technical issues</strong>: Contact your web developer
+<strong>For research direction problems</strong>: Check <code class="language-plaintext highlighter-rouge">research-directions/README.md</code></p>
+
+<hr />
+
+<p><strong>Remember</strong>: The website automatically rebuilds when you make changes. Most updates appear within a few minutes of saving your files!</p>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Prof. Maxim Vavilov. All rights reserved.</p>
+            <p>Quantum Computing Research Group</p>
+        </div>
+    </footer>
+</body>
+</html> 

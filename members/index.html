@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members Directory</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/member-containers.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <script src="/js/main.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="main-nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <h1>Prof. Maxim Vavilov</h1>
+                    <p class="nav-subtitle">Quantum Computing Research</p>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link" data-section="home">Home</a></li>
+                    <li><a href="#publications" class="nav-link" data-section="publications">Publications</a></li>
+                    <li><a href="#news" class="nav-link" data-section="news">News</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content" id="main-content">
+        <h1 id="members-directory">Members Directory</h1>
+
+<p>This directory contains centralized member data for all research team members. Each member is defined by:</p>
+
+<ol>
+  <li><strong>Photo</strong>: <code class="language-plaintext highlighter-rouge">member-name.jpg</code> or <code class="language-plaintext highlighter-rouge">member-name.png</code></li>
+  <li><strong>Data</strong>: <code class="language-plaintext highlighter-rouge">member-name.json</code> containing member information</li>
+</ol>
+
+<h2 id="default-image">Default Image</h2>
+<p>The file <code class="language-plaintext highlighter-rouge">default.jpg</code> is used as a fallback when a member’s photo is not available. Please do not delete this file.</p>
+
+<h2 id="adding-a-new-member">Adding a New Member</h2>
+
+<h3 id="1-create-the-json-file">1. Create the JSON file</h3>
+
+<p>Create <code class="language-plaintext highlighter-rouge">member-name.json</code> with this structure:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Full Name"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"personal_website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://member-website.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"social_media"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"linkedin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://linkedin.com/in/username"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://twitter.com/username"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"github"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/username"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member@university.edu"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brief description of research interests and background."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PhD Student"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member@university.edu"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="2-add-the-photo-optional">2. Add the photo (Optional)</h3>
+
+<p>Save the member’s photo as <code class="language-plaintext highlighter-rouge">member-name.jpg</code> (or <code class="language-plaintext highlighter-rouge">.png</code>) matching the JSON filename.
+If no photo is provided, the default image will be used automatically.</p>
+
+<p><strong>Photo requirements:</strong></p>
+<ul>
+  <li>Square aspect ratio (e.g., 400x400 pixels)</li>
+  <li>Professional headshot</li>
+  <li>File size under 500KB</li>
+  <li>Formats: JPG, PNG, or WebP</li>
+</ul>
+
+<h3 id="3-update-research-directions">3. Update research directions</h3>
+
+<p>In the research direction’s <code class="language-plaintext highlighter-rouge">direction.md</code> file, add the member to the <code class="language-plaintext highlighter-rouge">members</code> array:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Research</span><span class="nv"> </span><span class="s">Direction"</span>
+<span class="na">members</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">member-name"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">other-member"</span><span class="pi">]</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<h3 id="4-regenerate-data">4. Regenerate data</h3>
+
+<p>Run the update script:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./update_research.sh
+</code></pre></div></div>
+
+<h2 id="member-data-fields">Member Data Fields</h2>
+
+<h3 id="required-fields">Required Fields</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">name</code>: Full display name</li>
+</ul>
+
+<h3 id="optional-fields">Optional Fields</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">personal_website</code>: Member’s personal/academic website</li>
+  <li><code class="language-plaintext highlighter-rouge">social_media</code>: Object with social media links
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">linkedin</code>: LinkedIn profile</li>
+      <li><code class="language-plaintext highlighter-rouge">twitter</code>: Twitter profile</li>
+      <li><code class="language-plaintext highlighter-rouge">github</code>: GitHub profile</li>
+      <li><code class="language-plaintext highlighter-rouge">email</code>: Email address</li>
+      <li><code class="language-plaintext highlighter-rouge">orcid</code>: ORCID identifier</li>
+      <li><code class="language-plaintext highlighter-rouge">scholar</code>: Google Scholar profile</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">bio</code>: Brief description (1-2 sentences)</li>
+  <li><code class="language-plaintext highlighter-rouge">position</code>: Academic position (default: “Graduate Student”)</li>
+  <li><code class="language-plaintext highlighter-rouge">email</code>: Contact email</li>
+</ul>
+
+<h2 id="file-naming-convention">File Naming Convention</h2>
+
+<ul>
+  <li>Use lowercase letters and hyphens</li>
+  <li>Match JSON and image filenames exactly</li>
+  <li>Examples:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">john-smith.json</code> + <code class="language-plaintext highlighter-rouge">john-smith.jpg</code></li>
+      <li><code class="language-plaintext highlighter-rouge">mary-jane-watson.json</code> + <code class="language-plaintext highlighter-rouge">mary-jane-watson.png</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="social-media-icons">Social Media Icons</h2>
+
+<p>The system automatically displays icons for supported platforms:</p>
+<ul>
+  <li>LinkedIn: 🔗</li>
+  <li>Twitter: 🐦</li>
+  <li>GitHub: 💻</li>
+  <li>Email: 📧</li>
+  <li>ORCID: 🆔</li>
+  <li>Google Scholar: 🎓</li>
+</ul>
+
+<h2 id="example-member-files">Example Member Files</h2>
+
+<h3 id="john-smithjson">john-smith.json</h3>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"personal_website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://johnsmith.github.io"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"social_media"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"linkedin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://linkedin.com/in/johnsmith"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"github"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/johnsmith"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith@university.edu"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PhD student working on quantum error correction and fault-tolerant quantum computing."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PhD Student"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith@university.edu"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="jane-doejson">jane-doe.json</h3>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr. Jane Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"personal_website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://janedoe.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"social_media"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"linkedin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://linkedin.com/in/janedoe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orcid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://orcid.org/0000-0000-0000-0000"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Postdoc researcher specializing in superconducting qubits and quantum control."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Postdoctoral Researcher"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane.doe@university.edu"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="integration-with-research-directions">Integration with Research Directions</h2>
+
+<p>Members are assigned to research directions via the <code class="language-plaintext highlighter-rouge">members</code> field in <code class="language-plaintext highlighter-rouge">direction.md</code>:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Quantum</span><span class="nv"> </span><span class="s">Computing</span><span class="nv"> </span><span class="s">Research"</span>
+<span class="na">order</span><span class="pi">:</span> <span class="m">1</span>
+<span class="na">members</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">john-smith"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">jane-doe"</span><span class="pi">]</span>
+<span class="na">keywords</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">quantum"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">computing"</span><span class="pi">]</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p>The website automatically:</p>
+<ul>
+  <li>Displays member photos and information</li>
+  <li>Links to personal websites</li>
+  <li>Shows social media connections</li>
+  <li>Uses default image if no photo is provided</li>
+</ul>
+
+<h2 id="automatic-updates">Automatic Updates</h2>
+
+<p>When you add, remove, or modify members:</p>
+
+<ol>
+  <li>The GitHub Actions workflow automatically detects changes</li>
+  <li>Regenerates the member data files</li>
+  <li>Updates the website</li>
+  <li>No manual intervention required after initial setup</li>
+</ol>
+
+<p>This maintains the decoupled design while providing rich member information across all research directions.</p>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Prof. Maxim Vavilov. All rights reserved.</p>
+            <p>Quantum Computing Research Group</p>
+        </div>
+    </footer>
+</body>
+</html> 
